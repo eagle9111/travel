@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Country Analytics - Travel Agency</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .card-img-top {
+      height: 350px;
+      object-fit: cover;
+    }
+    .analytics-card {
+      transition: transform 0.3s ease;
+      border-radius: 10px;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .analytics-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .stat-card {
+      border-left: 4px solid #0d6efd;
+      border-radius: 5px;
+    }
+    .chart-container {
+      position: relative;
+      height: 300px;
+      width: 100%;
+    }
+    .country-flag {
+      width: 40px;
+      height: 25px;
+      object-fit: cover;
+      border-radius: 3px;
+      margin-right: 10px;
+    }
+    .table-hover tbody tr:hover {
+      background-color: rgba(13, 110, 253, 0.05);
+    }
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="pics/logo.jpg" height="50" width="50"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav me-auto text-white">
+        <li class="nav-item">
+          <a class="nav-link" style="color: white" href="index.html">Browse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white" href="weekends.html">Weekends</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white" href="hotels.html">Hotels</a>
+        </li>  
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" style="color: white">Analytics</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item active" href="analytics-country.html">Countries</a></li>
+            <li><a class="dropdown-item" href="analytics-hotels.html">Hotels</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" style="color: white" href="#contact">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white" href="sign-in.html">Sign In</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container-fluid mt-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2><i class="bi bi-globe-americas"></i> Country Analytics Dashboard</h2>
+      <p class="text-muted">View detailed analytics about our most popular travel destinations</p>
+    </div>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="row mb-4">
+    <div class="col-md-3 mb-3">
+      <div class="card stat-card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="text-muted mb-2">Total Countries</h6>
+              <h3 class="mb-0">48</h3>
+            </div>
+            <div class="bg-primary bg-opacity-10 p-3 rounded">
+              <i class="bi bi-globe text-primary fs-4"></i>
+            </div>
+          </div>
+          <p class="text-success mt-2 mb-0"><small><i class="bi bi-arrow-up"></i> 12% from last month</small></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+      <div class="card stat-card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="text-muted mb-2">Top Destination</h6>
+              <h3 class="mb-0">France</h3>
+            </div>
+            <div class="bg-primary bg-opacity-10 p-3 rounded">
+              <i class="bi bi-star-fill text-primary fs-4"></i>
+            </div>
+          </div>
+          <p class="text-muted mt-2 mb-0"><small>15,234 bookings</small></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+      <div class="card stat-card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="text-muted mb-2">Fastest Growing</h6>
+              <h3 class="mb-0">Japan</h3>
+            </div>
+            <div class="bg-primary bg-opacity-10 p-3 rounded">
+              <i class="bi bi-graph-up-arrow text-primary fs-4"></i>
+            </div>
+          </div>
+          <p class="text-success mt-2 mb-0"><small><i class="bi bi-arrow-up"></i> 32% growth</small></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+      <div class="card stat-card h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="text-muted mb-2">Avg. Rating</h6>
+              <h3 class="mb-0">4.7/5</h3>
+            </div>
+            <div class="bg-primary bg-opacity-10 p-3 rounded">
+              <i class="bi bi-heart-fill text-primary fs-4"></i>
+            </div>
+          </div>
+          <p class="text-muted mt-2 mb-0"><small>From 12,345 reviews</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="row mb-4">
+    <div class="col-lg-8 mb-4">
+      <div class="card analytics-card h-100">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">Bookings by Country (Last 6 Months)</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="bookingsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 mb-4">
+      <div class="card analytics-card h-100">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">Top 5 Countries</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="topCountriesChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tables Row -->
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <div class="card analytics-card h-100">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Most Popular Destinations</h5>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              This Year
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">This Year</a></li>
+              <li><a class="dropdown-item" href="#">Last Year</a></li>
+              <li><a class="dropdown-item" href="#">All Time</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Country</th>
+                  <th>Bookings</th>
+                  <th>Growth</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>
+                    <img src="https://flagcdn.com/w40/fr.png" class="country-flag" alt="France">
+                    France
+                  </td>
+                  <td>15,234</td>
+                  <td><span class="badge bg-success">+12%</span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>
+                    <img src="https://flagcdn.com/w40/it.png" class="country-flag" alt="Italy">
+                    Italy
+                  </td>
+                  <td>12,876</td>
+                  <td><span class="badge bg-success">+8%</span></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>
+                    <img src="https://flagcdn.com/w40/es.png" class="country-flag" alt="Spain">
+                    Spain
+                  </td>
+                  <td>11,543</td>
+                  <td><span class="badge bg-success">+15%</span></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>
+                    <img src="https://flagcdn.com/w40/us.png" class="country-flag" alt="USA">
+                    United States
+                  </td>
+                  <td>10,987</td>
+                  <td><span class="badge bg-success">+5%</span></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>
+                    <img src="https://flagcdn.com/w40/jp.png" class="country-flag" alt="Japan">
+                    Japan
+                  </td>
+                  <td>9,876</td>
+                  <td><span class="badge bg-success">+32%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-6 mb-4">
+      <div class="card analytics-card h-100">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Emerging Destinations</h5>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              This Year
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">This Year</a></li>
+              <li><a class="dropdown-item" href="#">Last Year</a></li>
+              <li><a class="dropdown-item" href="#">All Time</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Country</th>
+                  <th>Growth</th>
+                  <th>Bookings</th>
+                  <th>Avg. Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="https://flagcdn.com/w40/pt.png" class="country-flag" alt="Portugal">
+                    Portugal
+                  </td>
+                  <td><span class="badge bg-success">+45%</span></td>
+                  <td>7,654</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="progress flex-grow-1" style="height: 6px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 92%;" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small class="ms-2">4.6</small>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="https://flagcdn.com/w40/vn.png" class="country-flag" alt="Vietnam">
+                    Vietnam
+                  </td>
+                  <td><span class="badge bg-success">+38%</span></td>
+                  <td>6,543</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="progress flex-grow-1" style="height: 6px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 94%;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small class="ms-2">4.7</small>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="https://flagcdn.com/w40/gr.png" class="country-flag" alt="Greece">
+                    Greece
+                  </td>
+                  <td><span class="badge bg-success">+28%</span></td>
+                  <td>8,765</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="progress flex-grow-1" style="height: 6px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 96%;" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small class="ms-2">4.8</small>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="https://flagcdn.com/w40/cr.png" class="country-flag" alt="Costa Rica">
+                    Costa Rica
+                  </td>
+                  <td><span class="badge bg-success">+25%</span></td>
+                  <td>5,432</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="progress flex-grow-1" style="height: 6px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small class="ms-2">4.5</small>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="https://flagcdn.com/w40/ma.png" class="country-flag" alt="Morocco">
+                    Morocco
+                  </td>
+                  <td><span class="badge bg-success">+22%</span></td>
+                  <td>4,321</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="progress flex-grow-1" style="height: 6px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 88%;" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small class="ms-2">4.4</small>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+<!-- Chart.js Script -->
+<script>
+  // Bookings by Country Line Chart
+  const bookingsCtx = document.getElementById('bookingsChart').getContext('2d');
+  const bookingsChart = new Chart(bookingsCtx, {
+    type: 'line',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [
+        {
+          label: 'France',
+          data: [2200, 2400, 2800, 3000, 3200, 3500],
+          borderColor: '#0d6efd',
+          backgroundColor: 'rgba(13, 110, 253, 0.1)',
+          tension: 0.3,
+          fill: true
+        },
+        {
+          label: 'Italy',
+          data: [1800, 2000, 2300, 2500, 2700, 3000],
+          borderColor: '#fd7e14',
+          backgroundColor: 'rgba(253, 126, 20, 0.1)',
+          tension: 0.3,
+          fill: true
+        },
+        {
+          label: 'Spain',
+          data: [1500, 1700, 2000, 2200, 2400, 2700],
+          borderColor: '#198754',
+          backgroundColor: 'rgba(25, 135, 84, 0.1)',
+          tension: 0.3,
+          fill: true
+        },
+        {
+          label: 'Japan',
+          data: [800, 1000, 1200, 1500, 1800, 2200],
+          borderColor: '#dc3545',
+          backgroundColor: 'rgba(220, 53, 69, 0.1)',
+          tension: 0.3,
+          fill: true
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return value.toLocaleString();
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Top Countries Doughnut Chart
+  const topCountriesCtx = document.getElementById('topCountriesChart').getContext('2d');
+  const topCountriesChart = new Chart(topCountriesCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['France', 'Italy', 'Spain', 'USA', 'Japan', 'Others'],
+      datasets: [{
+        data: [15234, 12876, 11543, 10987, 9876, 25432],
+        backgroundColor: [
+          '#0d6efd',
+          '#fd7e14',
+          '#198754',
+          '#dc3545',
+          '#ffc107',
+          '#6c757d'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'right',
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              let label = context.label || '';
+              let value = context.raw || 0;
+              let total = context.dataset.data.reduce((a, b) => a + b, 0);
+              let percentage = Math.round((value / total) * 100);
+              return `${label}: ${value.toLocaleString()} (${percentage}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

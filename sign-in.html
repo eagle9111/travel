@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency - Login/Signup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .auth-image {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            object-position: center;
+        }
+        .auth-container {
+            background-color: #f8f9fa;
+            padding: 2rem;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+        }
+        .auth-switch-btn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 px-0 order-md-2">
+                <img src="pics/login.jpg" alt="Travel Agency" class="auth-image">
+            </div>
+
+            <!-- Form Section -->
+            <div class="col-md-6 auth-container d-flex align-items-center">
+                <div class="form-container w-100">
+                    <div id="loginForm">
+                        <h2 class="mb-4 text-center">Welcome Back!</h2>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Email address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control" placeholder="Enter your password">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+                            <a href="index.html" class="btn btn-primary w-100 mb-3">Continue as Guest</a>
+
+                            <p class="text-center">Don't have an account? 
+                                <span class="text-primary auth-switch-btn" onclick="showSignup()">Sign Up</span>
+                            </p>
+                        </form>
+                    </div>
+
+                    <!-- Signup Form (Hidden by default) -->
+                    <div id="signupForm" style="display: none;">
+                        <h2 class="mb-4 text-center">Create Account</h2>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Full Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <input type="text" class="form-control" placeholder="Enter your full name">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control" placeholder="Create a password">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    <input type="tel" class="form-control" placeholder="Enter your phone number">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mb-3">Sign Up</button>
+                            <p class="text-center">Already have an account? 
+                                <span class="text-primary auth-switch-btn" onclick="showLogin()">Login</span>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showSignup() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'block';
+        }
+
+        function showLogin() {
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
